@@ -1,0 +1,92 @@
+# ROAD TO VALOR - 유닛 밸런스 설정 (초기 제안값 / PROPOSED INITIAL VALUES)
+# 원본 기획서에 정의된 수치가 저장소에 없으므로 아래의 모든 수치는 임시 제안값이다.
+# 원본 수치가 있으면 해당 칸만 덮어쓰면 게임에 그대로 반영된다 (코드 수정 불필요).
+#
+# cp        : 카드 CP 비용 (0~10)          card_cd : 카드 재사용 대기(초, 0=없음)
+# count     : 소환 수                       hp/atk  : 개체당 체력 / 1회 공격력
+# dmg       : bullet sniper ap he flame aa tesla melee none  (피해 배율표는 game_config.json damageMatrix)
+# range     : 사거리(m)  interval: 공격 간격(초)  mag: 탄창(0=무한)  reload: 재장전(초)
+# speed     : 이동 속도(m/s)  sight: 시야(m)  armor: infantry light heavy air structure
+# air/ground: 공중/지상 공격 가능(1/0)  splash: 범위 피해 반경(m)  proj: 투사체 속도(m/s, 0=즉발)
+# mobility  : foot wheeled tracked air static skill   radius: 충돌 반경(m)
+# ability   : none charge heal repair minesweep laymines shield suppress aura recon stealth transport paradrop
+#             suicide fear droneswarm callartillery burn resupply airstrike carpetbomb supplydrop cargodrop missile
+#             tesla slowfield fortify forwardpost cpboost flare
+# ab_mode   : passive auto active    ab_p1/ab_p2/ab_cd/ab_radius : 능력 파라미터 (Docs/UNITS.md 참고)
+# build_time: 건물 건설 시간(초)  lifetime: 수명(초, 0=무한)  flags: indirect amphibious deploy_anywhere atmine loiter hq
+id,cp,card_cd,count,hp,atk,dmg,range,interval,mag,reload,speed,sight,armor,air,ground,splash,proj,mobility,radius,ability,ab_mode,ab_p1,ab_p2,ab_cd,ab_radius,build_time,lifetime,flags
+1,2,0,4,100,9,bullet,24,1.0,8,2.0,6.0,32,infantry,0,1,0,0,foot,0.6,none,passive,0,0,0,0,0,0,
+2,3,0,4,120,10,bullet,20,0.75,10,2.2,6.4,32,infantry,0,1,0,0,foot,0.6,charge,auto,1.6,4,18,0,0,0,
+3,3,0,1,90,75,sniper,62,3.2,5,3.0,5.6,66,infantry,0,1,0,0,foot,0.6,none,passive,0,0,0,0,0,0,
+4,4,0,2,130,7,bullet,30,0.25,30,4.0,5.0,34,infantry,1,1,0,0,foot,0.7,suppress,passive,0.6,2.5,0,0,0,0,
+5,4,0,2,100,60,ap,28,3.2,0,0,5.6,32,infantry,0,1,0,60,foot,0.6,none,passive,0,0,0,0,0,0,
+6,3,0,2,90,6,bullet,20,1.2,8,2.0,6.0,30,infantry,0,1,0,0,foot,0.6,heal,auto,8,0,0,16,0,0,
+7,4,0,2,120,14,flame,12,0.35,12,3.0,5.6,28,infantry,0,1,3,0,foot,0.7,burn,passive,6,3,0,0,0,0,
+8,3,0,3,100,7,bullet,20,1.2,8,2.0,6.0,30,infantry,0,1,0,0,foot,0.6,repair,auto,25,12,0,14,0,0,
+9,3,0,1,90,7,bullet,22,1.1,8,2.0,6.0,40,infantry,0,1,0,0,foot,0.6,callartillery,auto,55,3,22,95,0,0,
+10,4,0,2,90,38,he,95,3.5,0,0,5.0,30,infantry,0,1,6,40,foot,0.7,none,passive,0,0,0,0,0,0,indirect
+11,4,0,3,180,7,bullet,16,1.1,8,2.0,5.2,28,infantry,0,1,0,0,foot,0.8,shield,passive,0.6,0,0,0,0,0,
+12,3,0,4,115,14,bullet,12,0.5,15,2.0,6.6,28,infantry,0,1,0,0,foot,0.6,charge,auto,1.5,4,16,0,0,0,
+13,2,0,2,95,6,bullet,20,1.2,8,2.0,6.0,34,infantry,0,1,0,0,foot,0.6,minesweep,auto,0,0,0,22,0,0,
+14,3,0,3,100,22,he,20,2.6,0,0,6.0,30,infantry,0,1,5,22,foot,0.6,none,passive,0,0,0,0,0,0,
+15,1,0,2,80,7,bullet,24,1.1,8,2.0,7.0,60,infantry,0,1,0,0,foot,0.6,recon,passive,0,0,0,45,0,0,
+16,3,0,1,420,9,bullet,28,0.3,20,3.0,11.0,60,light,0,1,0,0,wheeled,2.2,recon,passive,0,0,0,50,0,0,
+17,4,0,1,560,45,ap,34,2.2,0,0,10.0,58,light,0,1,0,90,tracked,2.4,recon,passive,0,0,0,45,0,0,
+18,5,0,1,950,80,ap,38,3.0,0,0,7.5,42,heavy,0,1,2.5,100,tracked,2.8,none,passive,0,0,0,0,0,0,
+19,7,0,1,1700,120,ap,40,3.8,0,0,5.5,42,heavy,0,1,3,100,tracked,3.2,none,passive,0,0,0,0,0,0,
+20,5,0,1,900,20,flame,14,0.3,15,3.0,7.0,34,heavy,0,1,4,0,tracked,2.9,burn,passive,10,3,0,0,0,0,
+21,6,0,1,520,110,he,150,6.0,0,0,6.0,34,light,0,1,9,70,tracked,2.8,none,passive,0,0,0,0,0,0,indirect
+22,4,0,1,560,22,aa,55,0.4,12,3.0,8.5,60,light,1,1,0,0,tracked,2.6,none,passive,0,0,0,0,0,0,
+23,5,0,1,880,95,he,34,3.4,0,0,7.0,40,heavy,0,1,5,85,tracked,2.8,none,passive,0,0,0,0,0,0,
+24,5,0,1,720,130,ap,48,4.0,0,0,7.0,48,heavy,0,1,0,120,tracked,2.8,none,passive,0,0,0,0,0,0,
+25,6,0,1,480,42,he,130,0.35,8,10.0,7.0,34,light,0,1,7,55,wheeled,2.8,none,passive,0,0,0,0,0,0,indirect
+26,4,0,1,650,8,bullet,26,0.3,20,3.0,9.0,40,light,0,1,0,0,wheeled,2.6,transport,active,1,4,0,0,0,0,
+27,3,0,2,300,7,bullet,26,0.22,25,3.0,13.0,45,light,0,1,0,0,wheeled,1.8,charge,auto,1.4,4,16,0,0,0,
+28,2,0,2,220,5,bullet,20,0.6,10,2.0,8.0,55,light,0,1,0,0,wheeled,1.2,recon,passive,0,0,0,45,0,0,
+29,4,0,1,600,8,bullet,24,0.4,12,3.0,7.0,36,light,0,1,0,0,tracked,2.6,laymines,auto,180,6,7,3,0,0,
+30,3,0,1,500,0,none,0,1.0,0,0,8.5,34,light,0,0,0,0,wheeled,2.4,resupply,passive,0.10,6,0,20,0,0,
+31,6,0,1,420,26,bullet,28,0.9,8,2.0,6.0,40,infantry,0,1,0,0,foot,0.7,aura,passive,0.25,0.20,0,30,0,0,
+32,5,0,3,200,16,bullet,24,0.8,10,2.0,6.2,34,infantry,0,1,0,0,foot,0.6,aura,passive,0.10,0.10,0,18,0,0,
+33,6,0,1,700,11,bullet,24,0.18,40,4.0,5.0,34,light,0,1,0,0,foot,1.2,shield,passive,0.35,0,0,0,0,0,
+34,4,0,1,100,95,sniper,70,3.6,5,3.0,5.6,72,infantry,0,1,0,0,foot,0.6,stealth,passive,14,2.5,0,0,0,0,
+35,5,0,2,260,8,bullet,26,0.15,50,5.0,4.8,32,infantry,1,1,0,0,foot,0.8,suppress,passive,0.55,2.5,0,0,0,0,
+36,5,0,3,140,18,bullet,24,0.6,12,2.0,7.0,40,infantry,0,1,0,0,foot,0.6,stealth,passive,12,3,0,0,0,0,
+37,5,0,5,110,10,bullet,24,0.8,10,2.0,6.2,34,infantry,0,1,0,0,foot,0.6,paradrop,passive,4,0,0,0,0,0,deploy_anywhere
+38,4,0,4,115,11,bullet,24,0.8,10,2.0,6.6,34,infantry,0,1,0,0,foot,0.6,charge,auto,1.5,4,18,0,0,0,amphibious
+39,3,0,3,90,0,none,2,1.0,0,0,7.5,40,infantry,0,1,0,0,foot,0.6,suicide,auto,160,0,0,7,0,0,
+40,4,0,1,120,7,bullet,22,1.2,8,2.0,6.0,38,infantry,0,1,0,0,foot,0.6,fear,passive,0.25,0.25,0,28,0,0,
+41,4,0,2,90,7,bullet,22,1.1,8,2.0,6.0,40,infantry,0,1,0,0,foot,0.6,droneswarm,auto,51,2,14,60,0,0,
+42,4,0,4,120,11,bullet,22,0.55,14,2.0,6.4,32,infantry,0,1,0,0,foot,0.6,charge,auto,1.5,4,15,0,0,0,
+43,4,0,1,130,6,bullet,20,1.2,8,2.0,6.0,32,infantry,0,1,0,0,foot,0.6,heal,auto,18,0,0,22,0,0,
+44,3,0,2,100,6,bullet,20,1.2,8,2.0,5.8,30,infantry,0,1,0,0,foot,0.6,laymines,auto,320,4,8,3,0,0,atmine
+45,4,0,2,95,70,sniper,66,3.4,5,3.0,5.6,70,infantry,0,1,0,0,foot,0.6,stealth,passive,12,2.5,0,0,0,0,
+46,2,0,1,120,0,none,0,1.0,0,0,18.0,70,air,0,0,0,0,air,1.0,recon,passive,0,0,0,70,0,45,loiter
+47,6,0,1,650,30,he,40,0.8,8,4.0,16.0,50,air,0,1,3,90,air,3.0,none,passive,0,0,0,0,0,0,
+48,5,0,1,700,0,none,0,1.0,0,0,17.0,45,air,0,0,0,0,air,3.5,transport,auto,1,6,0,0,0,0,
+49,5,0,1,0,0,he,0,1.0,0,0,0,0,air,0,1,0,0,skill,0,airstrike,active,260,2.5,0,16,0,0,
+50,7,0,1,900,14,bullet,50,0.2,30,3.0,14.0,60,air,0,1,2,0,air,4.0,none,passive,0,0,0,0,0,40,loiter
+51,4,0,6,45,0,none,0,1.0,0,0,20.0,50,air,0,0,0,0,air,0.6,suicide,auto,90,0,0,6,0,25,
+52,7,0,1,0,0,he,0,1.0,0,0,0,0,air,0,1,0,0,skill,0,carpetbomb,active,150,10,0,10,0,0,
+53,4,0,1,450,40,aa,60,0.8,6,3.0,22.0,80,air,1,0,0,120,air,3.0,none,passive,0,0,0,0,0,45,loiter
+54,0,60,1,0,0,none,0,1.0,0,0,0,0,air,0,0,0,0,skill,0,supplydrop,active,3,60,0,22,0,0,
+55,3,45,1,0,0,none,0,1.0,0,0,0,0,air,0,0,0,0,skill,0,cargodrop,active,1.5,30,0,0,0,0,
+56,2,0,1,900,0,none,0,1.0,0,0,0,0,structure,0,0,0,0,static,4.0,fortify,passive,0.35,0,0,14,4,0,
+57,4,0,1,1200,9,bullet,34,0.2,40,3.0,0,38,structure,1,1,0,0,static,4.0,suppress,passive,0.6,2.5,0,0,6,0,
+58,4,0,1,1100,95,ap,46,3.2,0,0,0,48,structure,0,1,0,120,static,4.0,none,passive,0,0,0,0,6,0,
+59,4,0,1,900,55,aa,80,1.6,4,4.0,0,80,structure,1,0,0,110,static,4.0,none,passive,0,0,0,0,6,0,
+60,3,0,1,800,0,none,0,1.0,0,0,0,160,structure,0,0,0,0,static,4.0,recon,passive,0,0,0,160,6,0,
+61,4,0,1,1300,8,bullet,28,0.5,10,3.0,0,40,structure,0,1,0,0,static,4.5,forwardpost,passive,0.10,0,0,50,8,0,
+62,2,0,1,600,0,none,0,1.0,0,0,0,20,structure,0,0,0,0,static,4.0,slowfield,passive,0.5,0,0,18,3,0,
+63,6,0,1,1000,55,tesla,30,1.8,0,0,0,34,structure,0,1,0,0,static,4.0,tesla,passive,3,0.7,0,12,8,0,
+64,4,0,1,800,0,none,0,1.0,0,0,0,240,structure,0,0,0,0,static,4.0,recon,passive,0,0,0,240,8,0,
+65,3,0,1,900,0,none,0,1.0,0,0,0,20,structure,0,0,0,0,static,4.0,cpboost,passive,1.5,0,0,0,8,0,
+66,5,0,1,1000,70,he,140,5.0,0,0,0,30,structure,0,1,8,55,static,4.0,none,passive,0,0,0,0,8,0,indirect
+67,5,0,1,800,18,flame,14,0.3,15,3.0,8.0,34,light,0,1,4,0,wheeled,2.6,burn,passive,8,3,0,0,0,0,
+68,7,0,1,1600,190,ap,60,5.0,0,0,4.8,60,heavy,0,1,0,140,tracked,3.2,none,passive,0,0,0,0,0,0,
+69,6,0,1,2600,26,he,38,1.2,6,4.0,0,40,structure,0,1,3,90,static,4.5,fortify,passive,0.25,0,0,16,10,0,
+70,6,0,1,480,34,he,125,0.3,6,9.0,6.5,34,light,0,1,6,50,wheeled,2.6,none,passive,0,0,0,0,0,0,indirect
+71,6,0,1,380,20,bullet,26,0.9,8,2.0,6.0,44,infantry,0,1,0,0,foot,0.7,aura,passive,0.30,0.15,0,45,0,0,
+72,8,0,1,0,0,he,0,1.0,0,0,0,0,air,0,1,0,0,skill,0,missile,active,700,5,0,30,0,0,
+73,4,0,1,850,10,bullet,24,0.4,12,3.0,7.5,36,heavy,0,1,0,0,tracked,2.8,repair,auto,45,30,0,18,0,0,
+74,3,0,1,120,0,none,0,1.0,0,0,18.0,90,air,0,0,0,0,air,1.0,flare,passive,0.2,0,0,60,0,45,loiter
+900,0,0,1,6000,40,he,55,1.6,0,0,0,60,structure,1,1,3,90,static,16,none,passive,0,0,0,0,0,0,hq

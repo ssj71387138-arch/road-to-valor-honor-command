@@ -1,0 +1,83 @@
+# ROAD TO VALOR: HONOR COMMAND - 74종 유닛 로스터 (Docs/reference/unit_roster_74.png 기준)
+# name_ko / section / badge_color: 로스터 이미지에서 읽은 값.
+# rarity: 원본 기획서의 희귀도 표가 저장소에 없으므로 이미지 배지 색상에서 "임시로" 추정한 값이다.
+#   dark=Common(일반) blue=Rare(희귀) green=Hero(영웅) purple=Epic(에픽) orange=Special(특수) red=Legendary(전설)
+#   원본 기획서 값이 있으면 이 열만 교체하면 된다.
+# visual: 플레이스홀더 3D 모델 생성 키 (Scripts/Game/Units/UnitVisualFactory.cs). 실제 모델은 Resources/RoadToValor/Models/U{id:00} 프리팹으로 교체.
+# description: 임시 설명문(제안). 원본 설명이 있으면 교체.
+id,key,name_ko,section,badge_color,rarity,visual,role,description
+1,U01_BasicRifleman,기초 소총수,Infantry,blue,Rare,soldier_rifle,전선 유지,표준 소총으로 무장한 기본 보병 분대.
+2,U02_AssaultInfantry,돌격 보병,Infantry,dark,Common,soldier_assault,돌격,돌격 명령으로 짧은 시간 빠르게 돌진하는 보병.
+3,U03_Marksman,정밀 저격병,Infantry,blue,Rare,soldier_sniper,원거리 저격,긴 사거리에서 보병을 정밀 저격한다.
+4,U04_HeavyMG,중화기 기관총병,Infantry,blue,Rare,soldier_mg,제압,기관총 사격으로 적 보병의 이동과 사격을 제압한다.
+5,U05_Bazooka,대전차 바주카병,Infantry,blue,Rare,soldier_bazooka,대전차,로켓으로 장갑 목표에 큰 피해를 준다.
+6,U06_CombatMedic,전투 의무병,Infantry,blue,Rare,soldier_medic,치료,주변 아군 보병을 지속적으로 치료한다.
+7,U07_Flamethrower,화염방사병,Infantry,red,Legendary,soldier_flamer,근거리 화염,화염으로 보병과 구조물에 지속 피해를 준다.
+8,U08_EngineerPlatoon,공병 소대,Infantry,dark,Common,soldier_engineer,수리·철거,차량과 건물을 수리하고 건물 잔해를 철거한다.
+9,U09_RadioOperator,무전 통신병,Infantry,blue,Rare,soldier_radio,포격 요청,적 밀집 지역에 포격을 요청한다.
+10,U10_MortarTeam,박격포반,Infantry,blue,Rare,soldier_mortar,간접 화력,관측된 적에게 곡사 포탄을 날린다.
+11,U11_RiotShield,진압 방패병,Infantry,red,Legendary,soldier_shield,탱커,방패로 총탄 피해를 크게 줄인다.
+12,U12_CloseAssault,근접 돌격병,Infantry,blue,Rare,soldier_smg,근접 돌격,근거리에서 높은 화력을 쏟아내는 돌격병.
+13,U13_MineClearing,지뢰 제거반,Infantry,blue,Rare,soldier_detector,지뢰 제거,주변의 적 지뢰를 탐지·해체한다.
+14,U14_Grenadier,수류탄 투척병,Infantry,blue,Rare,soldier_grenade,범위 피해,수류탄으로 밀집한 보병에 범위 피해를 준다.
+15,U15_Scout,정찰병,Infantry,blue,Rare,soldier_scout,정찰,넓은 시야로 적을 발견하고 은신을 탐지한다.
+16,U16_ReconArmoredCar,경정찰 장갑차,Armor,red,Legendary,vehicle_armoredcar,정찰 기동,빠른 기동과 넓은 시야를 가진 정찰 장갑차.
+17,U17_LynxLightTank,정찰 경탱크 '링스',Armor,red,Legendary,tank_light,정찰 전차,빠르고 시야가 넓은 경전차.
+18,U18_AlphaMediumTank,중형 전차 '알파',Armor,blue,Rare,tank_medium,주력 전차,균형 잡힌 주력 중형 전차.
+19,U19_TitanHeavyTank,중전차 '타이탄',Armor,red,Legendary,tank_heavy,중장갑,두꺼운 장갑과 강력한 주포의 중전차.
+20,U20_FlameTank,화염방사 전차,Armor,red,Legendary,tank_flame,화염 돌파,화염으로 보병과 진지를 소각한다.
+21,U21_SPG,자주포,Armor,red,Legendary,tank_spg,장거리 포격,관측된 적을 원거리에서 포격한다.
+22,U22_AAVehicle,대공 장갑차,Armor,blue,Rare,vehicle_aa,대공,항공 유닛을 격추하는 대공 장갑차.
+23,U23_AssaultGunRaise,돌격포 '라이스',Armor,blue,Rare,tank_assaultgun,진지 파괴,고폭탄으로 구조물과 보병을 파괴한다.
+24,U24_TankDestroyer,구전차,Armor,red,Legendary,tank_destroyer,대전차,장거리 대전차포로 기갑을 저격한다. (이미지 표기 '구전차' - 구축전차로 추정)
+25,U25_MLRS,다연장 로켓 차량,Armor,red,Legendary,vehicle_mlrs,일제 사격,로켓 일제 사격으로 넓은 지역을 타격한다.
+26,U26_APC,수송 장갑차,Armor,purple,Epic,vehicle_apc,병력 수송,보병 분대를 태우고 전선까지 수송한다.
+27,U27_JeepRaiders,지프 돌격대,Armor,red,Legendary,vehicle_jeep,기동 타격,빠른 지프에 기관총을 탑재한 기동대.
+28,U28_ReconRobot,무인 정찰 로봇,Armor,blue,Rare,robot_recon,무인 정찰,적과 은신 유닛을 탐지하는 무인 로봇.
+29,U29_Minelayer,지뢰 부설 차량,Armor,red,Legendary,vehicle_minelayer,지뢰 부설,이동 경로에 지뢰를 부설한다.
+30,U30_SupplyTruck,보급 트럭,Armor,blue,Rare,vehicle_truck,보급,주변 아군을 회복시키고 CP 충전을 돕는다.
+31,U31_MedalOfHonor,명예훈장 수여자,Elite,red,Legendary,officer_medal,사기 고양,주변 아군의 공격력과 방어력을 높이는 영웅.
+32,U32_HonorGuard,의장대 돌격병,Elite,purple,Epic,guard_honor,정예 돌격,제복을 갖춘 정예 돌격병. 주변 아군을 고무한다.
+33,U33_CombatExo,전투 가이아,Elite,green,Hero,exo_heavy,중장갑 보병,외골격 장갑으로 총탄을 튕겨내는 중장갑 병사.
+34,U34_GhostSniper,고스트 저격수,Elite,dark,Common,ghillie_sniper,은신 저격,길리슈트로 은신한 채 적을 저격한다.
+35,U35_HeavyGatling,중장갑 개틀링병,Elite,green,Hero,soldier_gatling,제압 화력,개틀링 제압 사격과 중장갑을 갖춘 병사.
+36,U36_Commando,코만드 특전사,Elite,green,Hero,commando_rifle,침투,은신 침투 후 기습하는 특전사.
+37,U37_Paratroopers,낙하산 공수부대,Elite,blue,Rare,para_rifle,공수 강하,전장 어디든 낙하산으로 강하한다.
+38,U38_NavySeals,해군 특전대,Elite,green,Hero,seal_rifle,수륙 양용,강과 해안을 건너 기습하는 해군 특전대.
+39,U39_SuicideSquad,자폭 특공대,Elite,green,Hero,soldier_explosive,자폭,적에게 돌진해 폭발한다.
+40,U40_PsyOps,심리전 요원,Elite,red,Legendary,officer_psy,심리전,주변 적의 공격력과 이동 속도를 떨어뜨린다.
+41,U41_DronePilot,드론 조종사,Elite,blue,Rare,soldier_drone,드론 운용,자폭 드론을 주기적으로 발진시킨다.
+42,U42_GunAssault,총격 돌격대,Elite,blue,Rare,soldier_assault,돌격 사격,돌격 중 연사력이 오르는 돌격대.
+43,U43_FieldSurgeon,전장 군의관,Elite,green,Hero,medic_doctor,고급 치료,강력한 치료 능력을 가진 군의관.
+44,U44_ATMiner,대전차 지뢰병,Elite,green,Hero,soldier_mine,대전차 지뢰,기갑만 반응하는 대전차 지뢰를 매설한다.
+45,U45_CamoSniperTeam,위장 저격조,Elite,green,Hero,ghillie_sniper,은신 저격조,위장한 2인 저격조.
+46,U46_ReconDrone,공중 정찰 드론,Air,blue,Rare,air_drone,공중 정찰,목표 상공에서 정찰하고 은신을 탐지한다.
+47,U47_AttackHeli,공격 헬기,Air,blue,Rare,air_attackheli,공중 타격,로켓과 기관포로 지상을 공격하는 헬기.
+48,U48_TransportHeli,수송 헬기,Air,blue,Rare,air_cargoheli,공중 수송,보병 분대를 목표 지점에 내려준다.
+49,U49_FighterStrike,전투기 폭격,Air,purple,Epic,air_fighter,정밀 폭격,목표 지점에 정밀 폭격을 가한다.
+50,U50_GunshipOsprey,건십 오스프리,Air,purple,Epic,air_osprey,근접 항공 지원,목표 상공을 선회하며 지상을 사격한다.
+51,U51_KamikazeDrone,카미카제 드론,Air,blue,Rare,air_kamikaze,자폭 드론,적에게 돌입해 폭발하는 드론 편대.
+52,U52_TacticalBomber,전술 폭격기,Air,purple,Epic,air_bomber,융단 폭격,목표선을 따라 융단 폭격한다.
+53,U53_AASuppressor,대공 제압기,Air,blue,Rare,air_aajet,제공권,적 항공 유닛을 추적해 격추한다.
+54,U54_SupplyDrop,보급 투하,Air,blue,Rare,air_supplydrop,보급,즉시 CP +3을 얻고 투하 지점 아군을 회복한다.
+55,U55_CargoPlane,화물 수송선,Air,blue,Rare,air_cargoplane,병참,일정 시간 CP 충전 속도를 높인다.
+56,U56_SandbagNest,모래주머니 진지,Structure,dark,Common,struct_sandbag,엄폐,주변 아군 보병이 받는 피해를 줄인다.
+57,U57_MGBunker,기관총 벙커,Structure,dark,Common,struct_mgbunker,방어 화력,기관총으로 접근하는 보병을 제압한다.
+58,U58_ATTurret,대전차 포탑,Structure,orange,Special,struct_atturret,대전차 방어,접근하는 기갑을 격파한다.
+59,U59_SAMBattery,대공 미사일 포대,Structure,dark,Common,struct_aabattery,대공 방어,항공 유닛을 격추한다.
+60,U60_CounterBatteryRadar,대포 레이더 기지,Structure,orange,Special,struct_radar,탐지,넓은 범위의 적과 은신을 탐지한다.
+61,U61_ForwardCommand,전방 지휘소,Structure,orange,Special,struct_commandpost,전방 배치,주변에 부대를 배치할 수 있고 CP 충전을 돕는다.
+62,U62_BarbedWire,철조망 지대,Structure,dark,Common,struct_barbedwire,저지,적 보병과 경차량을 감속시킨다.
+63,U63_TeslaTower,테슬라 전포탑,Structure,blue,Rare,struct_tesla,연쇄 전격,전격이 여러 적에게 연쇄된다.
+64,U64_SatelliteStation,위성 관측소,Structure,dark,Common,struct_satellite,광역 관측,매우 넓은 범위를 관측한다.
+65,U65_ResourceExtractor,자원 채굴기,Structure,orange,Special,struct_extractor,자원,건설 시 CP 충전 속도 1.5배.
+66,U66_HeavyMortarPit,중박격포 진지,Hardcore,blue,Rare,struct_mortarpit,장거리 곡사,관측된 적에게 중박격포를 발사한다.
+67,U67_FlameAPC,화염방사 장갑차,Hardcore,red,Legendary,vehicle_flameapc,화염 돌격,화염방사기를 탑재한 장갑차.
+68,U68_JagdHeavyTD,중구축전차 '야크트',Hardcore,blue,Rare,tank_jagd,초장거리 대전차,두꺼운 장갑과 초장거리 대전차포.
+69,U69_Pillbox,토치카 요새,Hardcore,dark,Common,struct_pillbox,요새,매우 튼튼한 콘크리트 요새.
+70,U70_Nebelwerfer,네벨 전술 로켓포,Hardcore,red,Legendary,vehicle_nebel,로켓 일제사,연속 로켓 일제 사격.
+71,U71_FieldCommander,야전 사령관,Hardcore,orange,Special,officer_field,지휘,넓은 범위의 아군을 강화하는 사령관.
+72,U72_V2Missile,V2 전술 미사일,Hardcore,purple,Epic,missile_v2,전략 타격,경고 후 넓은 지역을 초토화한다.
+73,U73_CombatEngineerAV,전투 공병 장갑차,Hardcore,blue,Rare,vehicle_engineer,장갑 공병,빠른 수리와 잔해 철거.
+74,U74_FlareDrone,야간 조명 드론,Hardcore,blue,Rare,air_flaredrone,조명 지원,조명탄으로 주변을 밝혀 아군 명중률을 높인다.
+900,HQ,본진,Internal,none,Legendary,hq,본진,파괴되면 패배한다.

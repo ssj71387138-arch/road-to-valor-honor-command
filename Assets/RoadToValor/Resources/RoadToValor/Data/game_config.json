@@ -1,0 +1,82 @@
+{
+  "_comment": "ROAD TO VALOR 게임 규칙 설정. 기획서 확정 규칙(CP 최대 10, 채굴기 1.5배, 보급 투하 +3, 구역당 건설 2개)을 제외한 값은 플레이테스트용 제안값이다.",
+  "map": {
+    "size": 1200,
+    "seed": 1945,
+    "heightResolution": 513,
+    "navCellSize": 4,
+    "waterLevel": 9.0,
+    "baseHeight": 12.0,
+    "terrainMaxHeight": 150.0,
+    "terrainBottom": -10.0
+  },
+  "cp": {
+    "max": 10,
+    "start": 5,
+    "regenPerSecond": 0.35,
+    "extractorMultiplier": 1.5,
+    "extractorStacks": false,
+    "supplyDropAmount": 3,
+    "strategicZoneId": 14,
+    "strategicZoneRegenBonus": 0.15
+  },
+  "capture": {
+    "secondsToCapture": 16,
+    "perExtraUnitBonus": 0.2,
+    "maxSpeedMultiplier": 2.5,
+    "abandonRevertPerSecond": 0.03,
+    "maxBuildingsPerZone": 2,
+    "padsPerZone": 2
+  },
+  "waves": {
+    "enabled": true,
+    "firstDelay": 6,
+    "interval": 32,
+    "base": [1, 1, 1, 1, 2, 2],
+    "every3rd": [5],
+    "every4th": [16],
+    "maxWaveUnitsPerTeam": 90
+  },
+  "limits": {
+    "maxUnitsPerTeam": 170,
+    "maxProjectiles": 500,
+    "maxMinesPerTeam": 40
+  },
+  "deploy": {
+    "hqRadius": 85,
+    "zoneRadiusFactor": 1.0,
+    "paradropMinDistFromEnemyHQ": 140
+  },
+  "rubble": {
+    "workAmount": 100,
+    "autoClearSeconds": 0
+  },
+  "ai": {
+    "difficulty": "normal",
+    "deck": [1, 2, 4, 5, 8, 18, 58, 49]
+  },
+  "difficulty": {
+    "easy":   { "cpRegenMultiplier": 0.8,  "thinkInterval": 2.6, "skillMinTargets": 7 },
+    "normal": { "cpRegenMultiplier": 1.0,  "thinkInterval": 1.6, "skillMinTargets": 5 },
+    "hard":   { "cpRegenMultiplier": 1.25, "thinkInterval": 1.0, "skillMinTargets": 4 }
+  },
+  "playerDefaultDeck": [1, 2, 5, 6, 8, 18, 57, 54],
+  "damageMatrix": {
+    "bullet": { "infantry": 1.0, "light": 0.35, "heavy": 0.1,  "air": 0.5, "structure": 0.2 },
+    "sniper": { "infantry": 1.6, "light": 0.3,  "heavy": 0.05, "air": 0.2, "structure": 0.1 },
+    "ap":     { "infantry": 0.45,"light": 1.4,  "heavy": 1.3,  "air": 0.3, "structure": 0.9 },
+    "he":     { "infantry": 1.2, "light": 0.9,  "heavy": 0.55, "air": 0.2, "structure": 1.3 },
+    "flame":  { "infantry": 1.5, "light": 0.7,  "heavy": 0.3,  "air": 0.0, "structure": 1.0 },
+    "aa":     { "infantry": 0.3, "light": 0.4,  "heavy": 0.1,  "air": 2.0, "structure": 0.1 },
+    "tesla":  { "infantry": 1.3, "light": 1.0,  "heavy": 0.8,  "air": 0.5, "structure": 0.6 },
+    "melee":  { "infantry": 1.4, "light": 0.2,  "heavy": 0.05, "air": 0.0, "structure": 0.2 },
+    "none":   { "infantry": 0.0, "light": 0.0,  "heavy": 0.0,  "air": 0.0, "structure": 0.0 }
+  },
+  "research": {
+    "_comment": "로비 연구소 제안값. level당 보너스, 최대 레벨, 골드 비용(레벨마다 증가).",
+    "infantryHp":  { "name": "보병 방탄 장비", "perLevel": 0.04, "maxLevel": 5, "baseCost": 400 },
+    "armorHp":     { "name": "기갑 복합 장갑", "perLevel": 0.04, "maxLevel": 5, "baseCost": 500 },
+    "attack":      { "name": "화력 정밀 조준", "perLevel": 0.03, "maxLevel": 5, "baseCost": 600 },
+    "cpRegen":     { "name": "지휘 통신망",   "perLevel": 0.03, "maxLevel": 5, "baseCost": 800 }
+  }
+}
