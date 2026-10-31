@@ -34,6 +34,7 @@ public static class Program
         Console.WriteLine("Data + map generation: " + sw.ElapsedMilliseconds + " ms");
 
         if (args.Length > 0 && args[0] == "diag") { Diagnose(); return 0; }
+        if (args.Length > 1 && args[0] == "preview") { Preview(args[1]); return 0; }
         Run("Data", TestData);
         Run("Map", TestMap);
         Run("Milestone: select infantry, move, fight, capture", TestMilestone);
@@ -465,5 +466,70 @@ public static class Program
             }
             Console.WriteLine("   zones: " + string.Join(" ", sim.Zones.Select(z => z.Id + ":" + (z.Owner == Team.Player ? "P" : z.Owner == Team.Enemy ? "E" : "N") + (z.Contested ? "!" : "") + z.PlayerCount + "/" + z.EnemyCount)));
         }
+    }
+
+    /// <summary>Writes a top-down PPM preview of the generated battlefield (terrain layers, zones, pads, lanes, props).</summary>
+    private static void Preview(string path)
+    {
+        var m = _data.Map;
+        int size = 900;
+        var px = new float[size, size, 3];
+        var splat = m.ComputeSplat(512);
+        float[][] layer = {
+            new[]{0.86f,0.88f,0.92f}, new[]{0.32f,0.25f,0.18f}, new[]{0.4f,0.36f,0.31f}, new[]{0.45f,0.45f,0.45f},
+            new[]{0.22f,0.24f,0.15f}, new[]{0.58f,0.52f,0.42f}, new[]{0.6f,0.6f,0.6f}, new[]{0.66f,0.6f,0.47f} };
+        float cell = m.Size / size;
+        for (int y = 0; y < size; y++)
+            for (int x = 0; x < size; x++)
+            {
+                float wx = -m.Half + (x + 0.5f) * cell, wz = m.Half - (y + 0.5f) * cell;
+                int sx = Math.Min(511, (int)((wx + m.Half) / m.Size * 512)), sz = Math.Min(511, (int)((wz + m.Half) / m.Size * 512));
+                float r = 0, g = 0, b = 0;
+                for (int l = 0; l < 8; l++) { r += layer[l][0] * splat[sz, sx, l]; g += layer[l][1] * splat[sz, sx, l]; b += layer[l][2] * splat[sz, sx, l]; }
+                float h = m.SampleHeight(wx, wz);
+                float hx = m.SampleHeight(wx + cell, wz) - m.SampleHeight(wx - cell, wz);
+                float hz = m.SampleHeight(wx, wz + cell) - m.SampleHeight(wx, wz - cell);
+                float shade = Math.Clamp(1f + (-hx + hz) * 0.35f / cell, 0.6f, 1.35f);
+                r *= shade; g *= shade; b *= shade;
+                if (h < m.WaterLevel) { r = 0.12f; g = 0.22f; b = 0.3f; }
+                foreach (var br in m.Layout.Bridges) if (br.Contains(new Vec2(wx, wz))) { r = 0.55f; g = 0.5f; b = 0.4f; }
+                px[y, x, 0] = r; px[y, x, 1] = g; px[y, x, 2] = b;
+            }
+        void Dot(Vec2 p, int rad, float r, float g, float b)
+        {
+            int cx = (int)((p.X + m.Half) / cell), cy = (int)((m.Half - p.Z) / cell);
+            for (int dy = -rad; dy <= rad; dy++) for (int dx = -rad; dx <= rad; dx++)
+            {
+                int x = cx + dx, y = cy + dy;
+                if (x < 0 || y < 0 || x >= size || y >= size || dx * dx + dy * dy > rad * rad) continue;
+                px[y, x, 0] = r; px[y, x, 1] = g; px[y, x, 2] = b;
+            }
+        }
+        foreach (var p in m.Props)
+        {
+            bool tree = p.Kind == PropKind.PineTree || p.Kind == PropKind.SnowPine || p.Kind == PropKind.DeadTree;
+            if (tree) Dot(p.Pos, 1, 0.1f, 0.22f, 0.13f);
+            else if (p.BlockRadius > 0) Dot(p.Pos, 2, 0.25f, 0.24f, 0.24f);
+        }
+        foreach (var lane in m.Lanes) for (int i = 0; i < lane.Count; i += 2) Dot(lane[i], 1, 0.95f, 0.85f, 0.5f);
+        foreach (var z in m.Layout.Zones)
+        {
+            float cr = z.InitialOwner == Team.Player ? 0.25f : (z.InitialOwner == Team.Enemy ? 0.95f : 0.85f);
+            float cg = z.InitialOwner == Team.Player ? 0.55f : (z.InitialOwner == Team.Enemy ? 0.25f : 0.85f);
+            float cb = z.InitialOwner == Team.Player ? 1f : (z.InitialOwner == Team.Enemy ? 0.2f : 0.85f);
+            for (int a = 0; a < 180; a++) { float t = a / 180f * 6.2832f; Dot(z.Center + new Vec2(MathF.Sin(t), MathF.Cos(t)) * z.Radius, 1, cr, cg, cb); }
+            foreach (var pad in z.PadPositions) Dot(pad, 3, 1f, 0.8f, 0.2f);
+        }
+        foreach (var hq in m.Layout.Hqs) Dot(hq.Position, 9, hq.Team == Team.Player ? 0.2f : 0.9f, hq.Team == Team.Player ? 0.45f : 0.2f, hq.Team == Team.Player ? 0.95f : 0.2f);
+        using (var fs = File.Create(path))
+        {
+            var header = System.Text.Encoding.ASCII.GetBytes("P6\n" + size + " " + size + "\n255\n");
+            fs.Write(header, 0, header.Length);
+            var bytes = new byte[size * size * 3];
+            int k = 0;
+            for (int y = 0; y < size; y++) for (int x = 0; x < size; x++) for (int c = 0; c < 3; c++) bytes[k++] = (byte)Math.Clamp((int)(px[y, x, c] * 255f), 0, 255);
+            fs.Write(bytes, 0, bytes.Length);
+        }
+        Console.WriteLine("preview written: " + path);
     }
 }

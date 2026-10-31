@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Compile-only check of the Unity layer against a UnityEngine.dll reference assembly
+    (no Unity editor is needed). Usage:
+      dotnet build Tools/UnityCompileCheck -p:UnityEngineDll=/path/to/UnityEngine.dll
+      dotnet build Tools/UnityCompileCheck -p:UnityEngineDll=... -p:NewInputSystem=true
+    The second variant compiles the ENABLE_INPUT_SYSTEM path against a minimal API stub.
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AssemblyName>RoadToValor.UnityCheck</AssemblyName>
+    <NoWarn>CS0618</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(NewInputSystem)' == 'true'">
+    <DefineConstants>$(DefineConstants);ENABLE_INPUT_SYSTEM</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../Assets/RoadToValor/Scripts/**/*.cs" />
+    <Compile Include="InputSystemStub.cs" Condition="'$(NewInputSystem)' == 'true'" />
+    <Reference Include="UnityEngine">
+      <HintPath>$(UnityEngineDll)</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
