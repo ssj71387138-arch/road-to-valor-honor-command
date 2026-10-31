@@ -23,6 +23,8 @@ namespace RoadToValor.Core
         public bool Alive = true;
         public float SpawnTime;
         public float DeathTime;
+        /// <summary>0 = destroyed in combat, 1 = left the battlefield (aircraft exit / lifetime), 2 = self-destructed.</summary>
+        public byte DeathKind;
 
         // combat
         public float AttackCooldown;

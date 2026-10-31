@@ -435,6 +435,7 @@ namespace RoadToValor.Core
             u.Alive = false;
             u.Hp = 0f;
             u.DeathTime = Time;
+            u.DeathKind = silent ? (byte)1 : (byte)0;
             u.Activity = UnitActivity.Dead;
             if (!silent)
             {

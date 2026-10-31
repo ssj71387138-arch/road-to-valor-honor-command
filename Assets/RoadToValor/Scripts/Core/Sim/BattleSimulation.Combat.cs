@@ -304,6 +304,7 @@ namespace RoadToValor.Core
             float r = u.Def.AbRadius > 0f ? u.Def.AbRadius : 6f;
             Events.Add(new SimEvent { Type = SimEventType.Explosion, Team = u.Team, DefId = u.Def.Id, Pos = u.Pos, Value = r, Value2 = 1f });
             Kill(u, null, true);
+            u.DeathKind = 2;
             SplashDamage(u.Pos, r, u.Def.AbP1, DamageType.HE, u, u.Team, false);
         }
     }

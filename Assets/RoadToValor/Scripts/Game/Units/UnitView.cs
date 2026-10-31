@@ -157,6 +157,18 @@ namespace RoadToValor.Game
                 if (alive) Place(p, simTime, false);
             }
 
+            // Self-destructed units vanish inside their explosion.
+            if (!alive && u.DeathKind == 2) return false;
+            // Aircraft leaving the battlefield climb away instead of crashing.
+            if (!alive && u.DeathKind == 1)
+            {
+                if (!u.IsAir) return false;
+                _deathElapsed += dt;
+                transform.position += (transform.forward * 25f + Vector3.up * 14f) * dt;
+                if (_anim != null) { var c = new AnimContext { Speed = 25f, Dt = dt, Time = simTime, StateTime = _deathElapsed }; _anim.Animate(UnitAnimState.Walk, ref c); }
+                return _deathElapsed < 4f;
+            }
+
             // Aircraft crash: fall to the ground.
             if (!alive && u.IsAir && !_crashExploded)
             {
